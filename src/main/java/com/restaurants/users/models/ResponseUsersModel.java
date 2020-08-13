@@ -1,11 +1,11 @@
-package com.restaurants.users.dto;
+package com.restaurants.users.models;
 
 import com.restaurants.users.Entity.RoleEntity;
 
-import java.io.Serializable;
 import java.util.List;
 
-public class UserDto implements Serializable {
+public class ResponseUsersModel {
+
     private String userId;
     private String firstName;
     private String lastName;
@@ -13,12 +13,8 @@ public class UserDto implements Serializable {
     private Boolean enabled;
     private String encryptedPassword;
     private List<RoleEntity> role;
-    private String password;
 
-
-
-
-    //GETTERS AND SETTERS
+//GETTERS AND SETTERS
 
     public String getUserId() {
         return userId;
@@ -74,13 +70,5 @@ public class UserDto implements Serializable {
 
     public void setRole(List<RoleEntity> role) {
         this.role = role;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 }

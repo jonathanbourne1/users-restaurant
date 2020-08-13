@@ -19,14 +19,13 @@ public class UserEntity implements Serializable {
     private String email;
     @Column(nullable = false)
     private Boolean enabled;
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, length = 70)
     private String EncryptedPassword;
     @Column(nullable = false)
     private String userId;
 
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "users_to_roles" , joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns =
-    @JoinColumn(name="role_id"),uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
+    @JoinTable(name = "users_to_roles" , joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name="role_id"),uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
     private List<RoleEntity> role;
 
 
@@ -87,5 +86,13 @@ public class UserEntity implements Serializable {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public List<RoleEntity> getRole() {
+        return role;
+    }
+
+    public void setRole(List<RoleEntity> role) {
+        this.role = role;
     }
 }
