@@ -6,6 +6,7 @@ import java.util.List;
 
 public class ResponseUsersModel {
 
+    private Long id;
     private String userId;
     private String firstName;
     private String lastName;
@@ -15,6 +16,15 @@ public class ResponseUsersModel {
     private List<RoleEntity> role;
 
 //GETTERS AND SETTERS
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUserId() {
         return userId;

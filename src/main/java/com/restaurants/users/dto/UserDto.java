@@ -6,6 +6,8 @@ import java.io.Serializable;
 import java.util.List;
 
 public class UserDto implements Serializable {
+
+    private Long id;
     private String userId;
     private String firstName;
     private String lastName;
@@ -19,6 +21,15 @@ public class UserDto implements Serializable {
 
 
     //GETTERS AND SETTERS
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getUserId() {
         return userId;

@@ -1,9 +1,12 @@
 package com.restaurants.users.models;
 
+import com.restaurants.users.Entity.RoleEntity;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
+import java.util.List;
 
 public class CreateUserRequestModel  {
     @NotNull(message = "first name cannot be null")
@@ -16,6 +19,8 @@ public class CreateUserRequestModel  {
     @Email
     @NotNull(message = "e-mail cannot be null")
     private String email;
+
+
 
     //GETTERS AND SETTERS
 
@@ -51,4 +56,5 @@ public class CreateUserRequestModel  {
     public void setEmail(String email) {
         this.email = email;
     }
+
 }

@@ -23,7 +23,6 @@ public class UserEntity implements Serializable {
     private String EncryptedPassword;
     @Column(nullable = false)
     private String userId;
-
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_to_roles" , joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name="role_id"),uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
     private List<RoleEntity> role;

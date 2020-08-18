@@ -6,11 +6,21 @@ import java.io.Serializable;
 @Entity
 @Table
 public class RoleEntity implements Serializable {
+
+    public RoleEntity() {
+
+    }
+    public RoleEntity(Long id, String userRole) {
+        this.id = id;
+        this.userRole = userRole;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
     private String userRole;
+
 
     //GETTERS AND SETTERS
 
