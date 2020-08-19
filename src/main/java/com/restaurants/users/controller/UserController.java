@@ -4,6 +4,7 @@ package com.restaurants.users.controller;
 import com.restaurants.users.Entity.UserEntity;
 import com.restaurants.users.dto.UserDto;
 import com.restaurants.users.models.CreateUserRequestModel;
+import com.restaurants.users.models.RequestLogin;
 import com.restaurants.users.models.ResponseModel;
 import com.restaurants.users.models.ResponseUsersModel;
 import com.restaurants.users.service.UserService;
@@ -14,9 +15,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import javax.validation.Valid;
-import java.lang.reflect.Type;
 import java.util.List;
 
 @RestController
@@ -45,8 +44,24 @@ public class UserController {
     }
 
     @GetMapping
-    public List<ResponseUsersModel>getAllUsers()
+    public ResponseEntity<List<ResponseUsersModel>>getAllUsers()
     {
         return service.getAllUsers();
     }
+
+
+    @PostMapping("/findByEmail")
+    public ResponseEntity<UserEntity> findByEmail(@RequestBody RequestLogin requestLogin){
+       return service.findByEmail(requestLogin);
+    }
+
+    @PostMapping("/findByUsername")
+    public ResponseEntity<UserEntity> findByUsername(@RequestBody RequestLogin requestLogin){
+        return service.findByEmail(requestLogin);
+    }
+
+
+
+
+
 }

@@ -15,7 +15,7 @@ public class UserEntity implements Serializable {
     private String firstName;
     @Column(nullable = false, length = 50)
     private String lastName;
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false, length = 50, unique = true)
     private String email;
     @Column(nullable = false)
     private Boolean enabled;
@@ -26,7 +26,8 @@ public class UserEntity implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "users_to_roles" , joinColumns = @JoinColumn(name = "user_id"),inverseJoinColumns = @JoinColumn(name="role_id"),uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id","role_id"})})
     private List<RoleEntity> role;
-
+    @Column(nullable = false,unique = true)
+    private String username;
 
 //GETTERS AND SETTERS
 
@@ -93,5 +94,13 @@ public class UserEntity implements Serializable {
 
     public void setRole(List<RoleEntity> role) {
         this.role = role;
+    }
+
+    public String getUserName() {
+        return username;
+    }
+
+    public void setUserName(String username) {
+        this.username = username;
     }
 }

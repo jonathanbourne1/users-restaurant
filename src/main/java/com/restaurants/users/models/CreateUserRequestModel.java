@@ -19,7 +19,8 @@ public class CreateUserRequestModel  {
     @Email
     @NotNull(message = "e-mail cannot be null")
     private String email;
-
+    @NotNull(message = "username cannot be null")
+    private String username;
 
 
     //GETTERS AND SETTERS
