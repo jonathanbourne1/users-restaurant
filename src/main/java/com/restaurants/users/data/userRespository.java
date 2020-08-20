@@ -1,6 +1,7 @@
 package com.restaurants.users.data;
 
-import com.restaurants.users.entity.User;
+import com.restaurant.commons.models.entity.*;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
