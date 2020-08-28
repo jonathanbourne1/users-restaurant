@@ -1,4 +1,4 @@
-package com.restaurants.users.models;
+package com.restaurants.users.configuration;
 
 import com.restaurant.commons.models.entity.*;
 import org.springframework.context.annotation.Configuration;
