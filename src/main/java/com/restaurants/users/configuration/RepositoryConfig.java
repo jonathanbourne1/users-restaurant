@@ -2,8 +2,7 @@ package com.restaurants.users.configuration;
 
 import com.restaurant.commons.models.entity.*;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
-import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurer;
+/*
 
 @Configuration
 public class RepositoryConfig implements RepositoryRestConfigurer {
@@ -13,3 +12,4 @@ public class RepositoryConfig implements RepositoryRestConfigurer {
         config.exposeIdsFor(User.class, Role.class);
     }
 }
+*/
