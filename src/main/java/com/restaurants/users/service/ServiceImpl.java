@@ -8,6 +8,7 @@ import com.restaurants.users.model.response.UserResponse;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -25,6 +26,8 @@ public class ServiceImpl implements UserService {
     public User findByUsername(String usernamer) {
         return  userRespository.findByUsername(usernamer);
     }
+    @Autowired
+    BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public User findByEmail(String email) {
@@ -33,6 +36,8 @@ public class ServiceImpl implements UserService {
 
     @Override
     public UserDto createUser(UserDto userdetails) {
+        User userRepository = null;
+
         //modelmapper
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -42,7 +47,7 @@ public class ServiceImpl implements UserService {
         userdetails.setCredentialsNonExpired(true);
         userdetails.setEnabled(true);
         userdetails.setAccountNonLocked(true);
-        userdetails.setEncyptedPassword("test");
+        userdetails.setPasswordEncrypted(bCryptPasswordEncoder.encode(userdetails.getPassword()));
         userdetails.setUsername(userdetails.getEmail());
         //ADDING ROLE AS USER
         List<Role> role = new ArrayList<Role>();
@@ -54,8 +59,18 @@ public class ServiceImpl implements UserService {
         userdetails.setRole(role);
         //
         User user= modelMapper.map(userdetails,User.class);
-       User userDetails=userRespository.save(user);
-       UserDto userDto = modelMapper.map(userDetails,UserDto.class);
+
+        try {
+            userRepository=userRespository.save(user);
+
+        }catch (Exception e){
+            e.getMessage();
+
+            UserDto userDto = new UserDto();
+            userDto.setEmail("email already exist");
+            return userDto;
+        }
+        UserDto userDto = modelMapper.map(userRepository,UserDto.class);
         return userDto;
     }
 }

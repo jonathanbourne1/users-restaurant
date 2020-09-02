@@ -14,7 +14,7 @@ public class UserDto implements Serializable {
     private String userId;
     private String email;
     private String password;
-    private String encyptedPassword;
+    private String passwordEncrypted;
     private List<Role> role;
     private Boolean enabled;
     private Boolean accountNonExpired;
@@ -72,12 +72,12 @@ public class UserDto implements Serializable {
         this.password = password;
     }
 
-    public String getEncyptedPassword() {
-        return encyptedPassword;
+    public String getPasswordEncrypted() {
+        return passwordEncrypted;
     }
 
-    public void setEncyptedPassword(String encyptedPassword) {
-        this.encyptedPassword = encyptedPassword;
+    public void setPasswordEncrypted(String passwordEncrypted) {
+        this.passwordEncrypted = passwordEncrypted;
     }
 
     public List<Role> getRole() {

@@ -1,5 +1,5 @@
-INSERT INTO users (username, user_id,first_name,last_name,email,password,enabled,account_non_expired,credentials_non_expired, account_non_locked) VALUES ("jonathan.hernandez.oliva@gmail.com","1","jonathan","hernandez","jonathan.hernandez.oliva@gmail.com","$2a$10$f0Q47QzbpTcvan9RaWk7set3WHsVz.m3oGEJ6Q.kwpGMGjQtVzWL.",true,true,true,true);
-INSERT INTO users (username, user_id,first_name,last_name,email,password,enabled,account_non_expired,credentials_non_expired, account_non_locked) VALUES ("correo@correo.com","2","name","lastName","correo@correo.com","$2a$10$IMst3olkrfgQmEvFgB.HEeKxrBOAWuqNaNom2QkDrV1.niU/LQ7xi",true,true,true,true);
+INSERT INTO users (username, user_id,first_name,last_name,email,password_encrypted,enabled,account_non_expired,credentials_non_expired, account_non_locked) VALUES ("jonathan.hernandez.oliva@gmail.com","1","jonathan","hernandez","jonathan.hernandez.oliva@gmail.com","$2a$10$f0Q47QzbpTcvan9RaWk7set3WHsVz.m3oGEJ6Q.kwpGMGjQtVzWL.",true,true,true,true);
+INSERT INTO users (username, user_id,first_name,last_name,email,password_encrypted,enabled,account_non_expired,credentials_non_expired, account_non_locked) VALUES ("correo@correo.com","2","name","lastName","correo@correo.com","$2a$10$IMst3olkrfgQmEvFgB.HEeKxrBOAWuqNaNom2QkDrV1.niU/LQ7xi",true,true,true,true);
 
 INSERT INTO roles(role)VALUES("ROLE_ADMIN")
 INSERT INTO roles(role)VALUES("ROLE_USER")

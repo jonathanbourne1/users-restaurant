@@ -1,12 +1,15 @@
 package com.restaurants.users.model.response;
 
 public class UserResponse {
+
     private String firstName;
     private String lastName;
     private String Email;
     private String userId;
 
     //GETTERS AND SETTERS
+
+
 
     public String getFirstName() {
         return firstName;

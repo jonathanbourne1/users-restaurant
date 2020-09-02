@@ -4,6 +4,7 @@ package com.restaurants.users.controller;
 import com.restaurant.commons.models.entity.User;
 import com.restaurants.users.model.dto.UserDto;
 import com.restaurants.users.model.filter.UserModelFilter;
+import com.restaurants.users.model.response.UserAlreadyExist;
 import com.restaurants.users.model.response.UserResponse;
 import com.restaurants.users.service.UserService;
 
@@ -28,7 +29,7 @@ public class UserController {
     private Environment env;
 
     @PostMapping
-    public ResponseEntity<UserResponse> createNewUser(@Valid @RequestBody UserModelFilter usermodel){
+    public ResponseEntity createNewUser(@Valid @RequestBody UserModelFilter usermodel){
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         if (modelMapper==null){
@@ -36,8 +37,10 @@ public class UserController {
         }
         UserDto userDto= modelMapper.map(usermodel,UserDto.class);
         UserDto user= userService.createUser(userDto);
-        if(user==null){
-            new ResponseEntity<User>(HttpStatus.BAD_REQUEST);
+        if(user.getEmail()=="email already exist"){
+            UserAlreadyExist userResponse= new UserAlreadyExist();
+            userResponse.setMessage("this email already exist in our data base, try with another one");
+             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(userResponse);
         }
         UserResponse userResponse= modelMapper.map(user,UserResponse.class);
 
